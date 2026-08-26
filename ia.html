@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Uso de inteligencia artificial · MyGarden AI</title>
+    <meta name="description" content="Qué se envía al modelo, con qué límites, y hasta dónde llega lo que responde." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="estilo.css" />
+  </head>
+  <body>
+    <div class="envoltorio">
+      <header>
+        <a class="marca" href="index.html">&larr; MyGarden AI</a>
+        <h1>Uso de inteligencia artificial</h1>
+        <p class="entradilla">Qué se envía al modelo, con qué límites, y hasta dónde llega lo que responde.</p>
+      </header>
+      <h2>Cómo se tratan tus imágenes</h2>
+      <p>Las funciones de identificación de especies y de análisis del estado de las plantas se apoyan en un modelo de inteligencia artificial. A continuación se explica qué se envía, a quién y con qué límites.</p>
+      <h2>Tratamiento de las imágenes</h2>
+      <p>Cuando solicitas identificar una planta o revisar su estado, la fotografía se transmite mediante una conexión cifrada a un servidor propio y, desde él, al modelo Gemini de Google, que devuelve la especie, las pautas de cuidado y la evaluación del estado de la planta.</p>
+      <h2>Limitación del uso</h2>
+      <p>MyGarden AI utiliza la modalidad de pago de la API de Gemini. Conforme a sus condiciones de servicio, Google no emplea el contenido enviado para entrenar ni mejorar sus modelos. La imagen se procesa con el único fin de responder a tu consulta y no se conserva en ese proceso.</p>
+      <p>Distinto es el caso de la fotografía que acompaña a una planta guardada: esa imagen permanece en tu cuenta, en Firebase Storage, hasta que la elimines tú o elimines la cuenta.</p>
+      <p>Google interviene en este proceso como encargado del tratamiento por cuenta del responsable. Al margen de esa intervención, las imágenes no se ceden ni se comunican a terceros.</p>
+      <h2>Seguridad de las credenciales</h2>
+      <p>La clave de acceso al modelo y los componentes de autenticación residen en el servidor. Estas credenciales no se incluyen en el código de la aplicación ni se transmiten al dispositivo, lo que evita su exposición y el uso no autorizado del servicio.</p>
+      <h2>Límites de la información</h2>
+      <p>Los análisis, identificaciones y recomendaciones que ofrece la aplicación proceden de un modelo automático. Son estimaciones y no constituyen un diagnóstico profesional botánico, agronómico ni veterinario.</p>
+      <h2>Margen de error</h2>
+      <p>El sistema puede equivocarse al identificar una especie, y puede acertar con la especie y fallar en el diagnóstico de su estado o en los cuidados que sugiere. La información mostrada tiene carácter orientativo y debe tomarse como una guía de apoyo, nunca como una certeza.</p>
+      <h2>Toxicidad y salud animal</h2>
+      <p>La información sobre toxicidad para perros, gatos u otros animales es igualmente orientativa. Ante cualquier duda, y siempre ante una sospecha de intoxicación, acude de inmediato a un veterinario.</p>
+      <h2>Sobre el consumo de plantas</h2>
+      <p>MyGarden AI no informa de si una planta es comestible ni de cómo prepararla, y no debe utilizarse con esa finalidad. Determinar si una especie puede consumirse exige la validación de un profesional cualificado, y una identificación a partir de una fotografía no sirve para ello.</p>
+      <h2>Limitación de responsabilidad</h2>
+      <p>En la máxima medida permitida por la legislación aplicable, MADA Apps no responde de los daños o perjuicios derivados de las decisiones que el usuario adopte a partir de los resultados generados por el modelo de inteligencia artificial.</p>
+      <p>Esta limitación no alcanza a los daños causados por dolo o culpa grave, a los daños a la vida o a la integridad física de las personas, ni a los derechos que la normativa de consumo reconozca al usuario con carácter imperativo.</p>
+      <footer>
+        <p>
+          Responsable: MADA Apps &middot;
+          <a href="mailto:administracion.mada.apps@gmail.com">administracion.mada.apps@gmail.com</a>
+        </p>
+        <p>Última actualización: 26 de agosto de 2026</p>
+      </footer>
+    </div>
+  </body>
+</html>

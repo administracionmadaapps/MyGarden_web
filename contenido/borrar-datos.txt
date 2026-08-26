@@ -1,0 +1,44 @@
+Puedes eliminar tu cuenta de MyGarden AI y todos los datos asociados en cualquier momento. Hay
+dos formas de hacerlo: desde la propia aplicación, que es inmediata, y escribiendo un correo,
+que es la vía para quien ya no la tiene instalada.
+
+# Desde la aplicación
+Entra en Inicio, abre el menú tocando tu foto de perfil arriba a la derecha y elige "Acerca de".
+Al final de esa pantalla está la opción "Eliminar mi cuenta".
+
+Por seguridad se te pedirá que vuelvas a identificarte con Google antes de continuar. Después el
+borrado sigue por su cuenta y no hace falta esperar con la aplicación abierta.
+
+# Si ya la has desinstalado
+Escribe a {contacto} desde la misma dirección de correo con la que accedías a la aplicación.
+Necesitamos que sea esa dirección porque es lo que permite comprobar que la cuenta es tuya: no
+se puede atender una petición de borrado sin saber de quién son los datos que se van a borrar.
+
+No hace falta que expliques nada más ni que justifiques la petición. Basta con que digas que
+quieres eliminar tu cuenta.
+
+# Qué se borra
+Se borran tus datos de perfil (identificador de usuario, nombre, correo y fotografía asociados a
+tu cuenta de Google), todos tus jardines con su ubicación, todas tus plantas con sus cuidados,
+sus riegos y sus análisis, y todas las fotografías que hubieras subido.
+
+# Qué no se conserva
+No queda ninguna copia. El borrado es completo y no hay forma de recuperar la información
+después, ni siquiera a petición tuya. Si vuelves a entrar con la misma cuenta de Google,
+empezarás de cero.
+
+Las anotaciones internas de funcionamiento del servicio, como los registros técnicos que no
+identifican a una persona, se conservan durante el tiempo necesario para el mantenimiento del
+sistema.
+
+# Plazo
+El borrado desde la aplicación es inmediato.
+
+Las peticiones que llegan por correo se atienden en el plazo máximo de un mes desde su
+recepción, conforme al artículo 12.3 del Reglamento (UE) 2016/679. En la práctica se resuelven
+mucho antes; el plazo es el límite, no la previsión.
+
+# Si algo no funciona
+Si has eliminado la cuenta y crees que algún dato sigue ahí, escribe a {contacto} y se
+comprobará. También puedes presentar una reclamación ante la Agencia Española de Protección de
+Datos (www.aepd.es).

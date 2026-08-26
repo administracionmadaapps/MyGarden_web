@@ -1,0 +1,174 @@
+/*
+ * Los colores son los de la app (ver Color.kt en el repositorio de MyGarden),
+ * para que quien llegue aquí desde la ficha de Play reconozca que es lo mismo.
+ * La escala de superficies está rota a propósito allí —la tarjeta es más
+ * oscura que el fondo— y aquí se respeta por la misma razón.
+ */
+:root {
+  --fondo: #f5efc2;
+  --superficie: #fffdf0;
+  --tarjeta: #b1c79d;
+  --texto: #1b1c12;
+  --texto-suave: #3d4433;
+  --primario: #3d523d;
+  --acento: #f3b4a9;
+  --borde: #8c9c7c;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fondo: #10140f;
+    --superficie: #1b211a;
+    --tarjeta: #2a302a;
+    --texto: #e0e4db;
+    --texto-suave: #c2c9bd;
+    --primario: #a8cfa0;
+    --acento: #f3b4a9;
+    --borde: #46503f;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: Nunito, "Segoe UI", system-ui, -apple-system, sans-serif;
+  /* Un texto legal se lee entero o no se lee: interlineado generoso. */
+  line-height: 1.7;
+  font-size: 17px;
+}
+
+.envoltorio {
+  /* 68 caracteres por línea es donde deja de cansar. */
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 4rem;
+}
+
+header {
+  border-bottom: 1px solid var(--borde);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+}
+
+.marca {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  color: var(--primario);
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-decoration: none;
+}
+
+.marca:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  font-size: 1.9rem;
+  line-height: 1.25;
+  margin: 1.2rem 0 0.4rem;
+  color: var(--texto);
+}
+
+h2 {
+  font-size: 1.15rem;
+  margin: 2.2rem 0 0.5rem;
+  color: var(--primario);
+}
+
+.entradilla {
+  color: var(--texto-suave);
+  margin-top: 0;
+}
+
+a {
+  color: var(--primario);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+/* Las tarjetas del índice: el mismo salvia que la app usa para las suyas. */
+.indice {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.indice a {
+  display: block;
+  background: var(--tarjeta);
+  color: var(--texto);
+  padding: 1rem 1.25rem;
+  border-radius: 14px;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.indice a:hover,
+.indice a:focus-visible {
+  border-color: var(--primario);
+}
+
+.indice strong {
+  display: block;
+  font-size: 1.05rem;
+}
+
+.indice span {
+  color: var(--texto-suave);
+  font-size: 0.92rem;
+}
+
+/* Lo que hay que hacer para darse de baja, destacado sobre el resto. */
+.destacado {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-left: 5px solid var(--acento);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.destacado p:first-child {
+  margin-top: 0;
+}
+
+.destacado p:last-child {
+  margin-bottom: 0;
+}
+
+footer {
+  border-top: 1px solid var(--borde);
+  margin-top: 3rem;
+  padding-top: 1rem;
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: var(--texto-suave);
+}
+
+/* Una línea de teléfono no aguanta 17px con márgenes de escritorio. */
+@media (max-width: 30rem) {
+  body {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .envoltorio {
+    padding: 1.25rem 1rem 3rem;
+  }
+}
