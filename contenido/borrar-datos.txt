@@ -22,10 +22,17 @@ Se borran tus datos de perfil (identificador de usuario, nombre, correo y fotogr
 tu cuenta de Google), todos tus jardines con su ubicación, todas tus plantas con sus cuidados,
 sus riegos y sus análisis, y todas las fotografías que hubieras subido.
 
-# Qué no se conserva
-No queda ninguna copia. El borrado es completo y no hay forma de recuperar la información
-después, ni siquiera a petición tuya. Si vuelves a entrar con la misma cuenta de Google,
-empezarás de cero.
+# Qué no queda
+De tus plantas, tus jardines y tus fotografías no se guarda ninguna copia. El borrado es completo
+y no hay forma de recuperarlos después, ni siquiera a petición tuya. Si vuelves a entrar con la
+misma cuenta de Google, empezarás de cero.
+
+# Lo único que sobrevive
+Si en algún momento has contratado una suscripción, la constancia de esa operación se conserva
+aparte, y no por decisión nuestra: la normativa fiscal y mercantil obliga a guardar la
+documentación de las operaciones durante los plazos que establece. Esa información se guarda
+bloqueada, no se utiliza para ninguna otra finalidad y solo se pone a disposición de la
+Administración tributaria o de los tribunales si la requieren.
 
 Las anotaciones internas de funcionamiento del servicio, como los registros técnicos que no
 identifican a una persona, se conservan durante el tiempo necesario para el mantenimiento del
