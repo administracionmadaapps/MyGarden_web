@@ -29,6 +29,10 @@
       <p>Archivos multimedia: las fotografías de tus plantas.</p>
       <p>De cada planta se guarda únicamente la última fecha de riego, no la serie completa de riegos anteriores.</p>
       <p>De los análisis de estado sí se conserva un historial breve: los cinco más recientes de cada planta, con su fecha, su valoración y la fotografía con la que se realizaron. Al llegar a ese número, el más antiguo se elimina por completo, incluida su fotografía.</p>
+      <h2>Previsión meteorológica</h2>
+      <p>Para enseñar el tiempo de tus jardines, y para avisarte del mal tiempo previsto en los que están al aire libre, la aplicación envía a su propio servidor la ubicación que hayas asignado a cada jardín. El servidor la redondea a una cuadrícula de algo más de un kilómetro y consulta la previsión de esa posición redondeada a OpenWeather (openweathermap.org), que actúa como proveedor del dato. A OpenWeather no se le envía tu identificador de usuario, ni tu nombre, ni tu correo, ni ningún otro dato de tu cuenta: únicamente esa posición redondeada.</p>
+      <p>La consulta se hace al abrir la aplicación y, si tienes encendidos los avisos de mal tiempo, además una vez al día aunque no la abras. La previsión de cada cuadrícula se guarda durante un día y la comparten todos los usuarios de esa zona, que es precisamente lo que evita repetir consultas.</p>
+      <p>Los avisos de mal tiempo se deciden en tu teléfono. El servidor no consulta tus jardines para esto ni te envía notificaciones.</p>
       <h2>Dónde se almacenan</h2>
       <p>La información se aloja en la infraestructura de Google Cloud a través de Firebase: Cloud Firestore para los datos de la cuenta, los jardines y las plantas, y Firebase Storage para las fotografías. Google actúa como encargado del tratamiento por cuenta del responsable.</p>
       <h2>Finalidad y base jurídica</h2>
@@ -57,7 +61,7 @@
           Responsable: María Andreu Cabezón &middot;
           <a href="mailto:administracion.mada.apps@gmail.com">administracion.mada.apps@gmail.com</a>
         </p>
-        <p>Última actualización: 13 de septiembre de 2026</p>
+        <p>Última actualización: 17 de septiembre de 2026</p>
       </footer>
     </div>
   </body>
