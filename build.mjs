@@ -181,7 +181,13 @@ function plantilla({ titulo, entradilla, cuerpo, esPortada = false }) {
         <p class="lema">${escapar(lema)}</p>`
             : `<h1>${escapar(titulo)}</h1>`
         }
-        <p class="entradilla">${escapar(entradilla)}</p>
+        ${
+          // La portada no lleva entradilla: debajo del logo y el lema, una
+          // tercera frase presentando la aplicación sobraba (David, sep 2026).
+          // El texto sigue existiendo como `description` de la página, que es
+          // lo que leen los buscadores y lo que se ve al compartir el enlace.
+          esPortada ? "" : `<p class="entradilla">${escapar(entradilla)}</p>`
+        }
       </header>
 ${cuerpo}
       <footer>
