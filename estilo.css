@@ -88,6 +88,34 @@ h2 {
   margin-top: 0;
 }
 
+/*
+ * La portada: el logo hace de título. El dibujo trae su fondo blanco pegado
+ * -viene del mismo fichero que usa la app- y en modo oscuro se ve como una
+ * tarjeta clara. Es a propósito: la app hace lo mismo, recortándolo con
+ * esquinas redondeadas sobre la foto de portada.
+ */
+header.portada {
+  text-align: center;
+}
+
+.logo {
+  margin: 0.5rem 0 0;
+}
+
+.logo img {
+  display: block;
+  margin: 0 auto;
+  width: min(15rem, 70%);
+  height: auto;
+  border-radius: 20px;
+}
+
+.lema {
+  color: var(--texto-suave);
+  margin: 0.6rem 0 1.2rem;
+  font-size: 1.15rem;
+}
+
 a {
   color: var(--primario);
   text-decoration-thickness: 1px;

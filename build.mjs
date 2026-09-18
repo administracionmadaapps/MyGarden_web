@@ -64,8 +64,8 @@ const paginas = [
  * también la aplicación. Leerlos de ahí y no repetirlos aquí es lo que evita
  * que la web nombre a un responsable y la app a otro.
  */
-function valorDeStrings(nombre) {
-  const xml = readFileSync(join(app, "values", "strings.xml"), "utf8");
+function valorDeStrings(nombre, carpeta = "values") {
+  const xml = readFileSync(join(app, carpeta, "strings.xml"), "utf8");
   const encontrado = xml.match(
     new RegExp(`<string name="${nombre}"[^>]*>([^<]*)</string>`)
   );
@@ -77,6 +77,13 @@ function valorDeStrings(nombre) {
 
 const responsable = valorDeStrings("legal_owner");
 const contacto = valorDeStrings("legal_contact");
+
+/**
+ * El lema de la portada. Sale de `values-es` y no del fichero base porque esta
+ * web está en español; en la app viaja aparte del dibujo del logo por lo mismo
+ * que aquí: dentro del PNG se quedaría en un solo idioma.
+ */
+const lema = valorDeStrings("app_tagline", "values-es");
 
 function escapar(texto) {
   return texto
@@ -154,13 +161,26 @@ function plantilla({ titulo, entradilla, cuerpo, esPortada = false }) {
   </head>
   <body>
     <div class="envoltorio">
-      <header>
+      <header${esPortada ? ' class="portada"' : ""}>
         ${
           // En la portada no hay marca sobre el título: el título ya es la
           // marca, y repetirla dejaba "MyGarden AI" dos veces seguidas.
           esPortada ? "" : '<a class="marca" href="index.html">&larr; MyGarden AI</a>'
         }
-        <h1>${escapar(titulo)}</h1>
+        ${
+          // En la portada el título es el logo, que ya trae el nombre dibujado
+          // dentro: va dentro del h1 para que el encabezado siga existiendo
+          // para quien no ve la imagen, con el nombre en su texto alternativo.
+          //
+          // **El fondo blanco del dibujo viaja pegado** y aquí hay modo
+          // oscuro, así que se ve un recuadro claro. Es a propósito (David,
+          // sep 2026): es el mismo recorte con esquinas redondeadas que la app
+          // pone sobre la foto de la portada.
+          esPortada
+            ? `<h1 class="logo"><img src="logo.jpg" alt="MyGarden AI" width="1024" height="806" /></h1>
+        <p class="lema">${escapar(lema)}</p>`
+            : `<h1>${escapar(titulo)}</h1>`
+        }
         <p class="entradilla">${escapar(entradilla)}</p>
       </header>
 ${cuerpo}
