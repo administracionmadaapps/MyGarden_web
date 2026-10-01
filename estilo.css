@@ -197,6 +197,25 @@ summary:focus-visible {
   font-size: 0.92rem;
 }
 
+/*
+ * La tarjeta de lo que más se viene a buscar, rellena para que se vea la
+ * primera. Texto en --fondo sobre --primario: el par invertido de los enlaces,
+ * con el mismo contraste (7,3:1 en claro, 10,7:1 en oscuro).
+ */
+.indice a.principal {
+  background: var(--primario);
+  color: var(--fondo);
+}
+
+.indice a.principal span {
+  color: var(--fondo);
+}
+
+.indice a.principal:hover,
+.indice a.principal:focus-visible {
+  border-color: var(--fondo);
+}
+
 /* "En esta página": plegado, para no empujar el texto hacia abajo. */
 .contenido {
   border: 1px solid var(--borde);

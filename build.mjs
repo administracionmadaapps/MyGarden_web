@@ -382,10 +382,11 @@ for (const pagina of paginas) {
 
 // La portada se escribe aquí y no sale de ningún .txt: no es un texto legal,
 // es la puerta. Su trabajo es que quien llega buscando una cosa concreta
-// —normalmente borrar sus datos— la encuentre sin leer nada más.
+// —normalmente borrar sus datos— la encuentre sin leer nada más. Por eso su
+// tarjeta es la única rellena (`principal`).
 const portada = `      <ul class="indice">
         <li>
-          <a href="borrar-datos.html">
+          <a class="principal" href="borrar-datos.html">
             <strong>Eliminar tus datos</strong>
             <span>Cómo borrar tu cuenta, con la aplicación o sin ella</span>
           </a>
