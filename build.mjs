@@ -23,15 +23,12 @@ const aqui = dirname(fileURLToPath(import.meta.url));
 const app = join(aqui, "..", "MyGarden", "app", "src", "main", "res");
 const raw = join(app, "raw");
 
-/** Lo que va en cada página. `fuentes` se concatenan en el orden dado. */
+/**
+ * Lo que va en cada página, en el orden de la portada. `fuentes` se concatenan
+ * en el orden dado. `indice` añade "En esta página" arriba: las páginas largas
+ * lo piden; la de borrar datos no, porque lo que importa está ya a la vista.
+ */
 const paginas = [
-  {
-    salida: "privacidad.html",
-    titulo: "Protección de datos",
-    entradilla:
-      "Qué datos registra MyGarden AI, dónde se guardan y qué puedes hacer con ellos.",
-    fuentes: [{ fichero: join(raw, "legal_datos.txt") }],
-  },
   {
     salida: "borrar-datos.html",
     titulo: "Eliminar tus datos",
@@ -40,10 +37,12 @@ const paginas = [
     fuentes: [{ fichero: join(aqui, "contenido", "borrar-datos.txt") }],
   },
   {
-    salida: "terminos.html",
-    titulo: "Condiciones de uso",
-    entradilla: "Las condiciones que acepta quien usa la aplicación.",
-    fuentes: [{ fichero: join(raw, "legal_terminos.txt") }],
+    salida: "privacidad.html",
+    titulo: "Protección de datos",
+    entradilla:
+      "Qué datos registra MyGarden AI, dónde se guardan y qué puedes hacer con ellos.",
+    fuentes: [{ fichero: join(raw, "legal_datos.txt") }],
+    indice: true,
   },
   {
     salida: "ia.html",
@@ -51,11 +50,20 @@ const paginas = [
     entradilla:
       "Qué se envía al modelo, con qué límites, y hasta dónde llega lo que responde.",
     // Dos ficheros en una página: en la app son dos apartados plegables del
-    // mismo bloque, y separarlos aquí obligaría a leer medio asunto.
+    // mismo bloque, y separarlos aquí obligaría a leer medio asunto. Cada
+    // fichero abre con su título (h2) y sus apartados cuelgan de él (h3).
     fuentes: [
       { fichero: join(raw, "legal_ia.txt"), titulo: "Cómo se tratan tus imágenes" },
       { fichero: join(raw, "legal_ia_limites.txt"), titulo: "Límites de la información" },
     ],
+    indice: true,
+  },
+  {
+    salida: "terminos.html",
+    titulo: "Condiciones de uso",
+    entradilla: "Las condiciones que acepta quien usa la aplicación.",
+    fuentes: [{ fichero: join(raw, "legal_terminos.txt") }],
+    indice: true,
   },
 ];
 
@@ -93,9 +101,10 @@ function escapar(texto) {
 }
 
 /**
- * Convierte el formato de res/raw en html. Es deliberadamente pobre, igual
- * que el que pinta la aplicación: párrafos separados por una línea en blanco,
- * y los que empiezan por "# " son subtítulos. Nada más, porque nada más hay.
+ * Parte el formato de res/raw en trozos de texto: los que empiezan por "# " son
+ * subtítulos y el resto párrafos. Es deliberadamente pobre, igual que el que
+ * pinta la aplicación: párrafos separados por una línea en blanco, y nada más,
+ * porque nada más hay.
  *
  * Las líneas de dentro de un párrafo van cortadas a lo ancho del fichero y se
  * vuelven a unir: los saltos son del fichero, no del texto.
@@ -105,7 +114,7 @@ function escapar(texto) {
  * caen en el mismo bloque; sin separarlos, el párrafo entero se pinta como
  * título. La aplicación tenía este mismo fallo y se arregló a la vez.
  */
-function aHtml(texto) {
+function trozos(texto) {
   return texto
     .trim()
     .split(/\n\s*\n/)
@@ -118,13 +127,67 @@ function aHtml(texto) {
         : [limpio.slice(0, salto), limpio.slice(salto + 1)];
     })
     .map((trozo) => trozo.trim().split("\n").map((l) => l.trim()).join(" "))
-    .filter((trozo) => trozo.length > 0)
-    .map((trozo) =>
-      trozo.startsWith("# ")
-        ? `      <h2>${enlazar(escapar(trozo.slice(2)))}</h2>`
-        : `      <p>${enlazar(escapar(trozo))}</p>`
+    .filter((trozo) => trozo.length > 0);
+}
+
+/**
+ * El id de un título, para poder enlazarlo: en minúsculas, sin tildes y con
+ * guiones. Si ya hay uno igual en la página se numera, porque un id repetido
+ * lleva siempre al primero sin avisar.
+ */
+function idDe(texto, usados) {
+  const base =
+    texto
+      .normalize("NFD")
+      .replace(/[̀-ͯ]/g, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "") || "apartado";
+  let id = base;
+  for (let n = 2; usados.has(id); n++) id = `${base}-${n}`;
+  usados.add(id);
+  return id;
+}
+
+/**
+ * Pasa los trozos a html. Cada uno es `{ nivel, texto }` si es un título (2 o
+ * 3) o `{ texto }` si es un párrafo. Devuelve también los títulos con su id,
+ * que es lo que necesita el índice de la página.
+ */
+function apartados(items) {
+  const usados = new Set();
+  const titulos = [];
+  const html = items
+    .map(({ nivel, texto }) => {
+      if (!nivel) return `      <p>${enlazar(escapar(texto))}</p>`;
+      const id = idDe(texto, usados);
+      titulos.push({ nivel, texto, id });
+      return `      <h${nivel} id="${id}">${enlazar(escapar(texto))}</h${nivel}>`;
+    })
+    .join("\n");
+  return { html, titulos };
+}
+
+/**
+ * "En esta página", plegado: las páginas largas son decenas de pantallas en un
+ * móvil, pero desplegado empujaría el texto hacia abajo antes de empezar. Los
+ * apartados de segundo nivel van sangrados, nada más: la lista es plana.
+ */
+function indicePagina(titulos) {
+  const enlaces = titulos
+    .map(
+      ({ nivel, texto, id }) =>
+        `          <li${nivel === 3 ? ' class="sub"' : ""}><a href="#${id}">${escapar(texto)}</a></li>`
     )
     .join("\n");
+  return `      <nav class="contenido" aria-label="En esta página">
+        <details>
+          <summary>En esta página</summary>
+          <ul>
+${enlaces}
+          </ul>
+        </details>
+      </nav>`;
 }
 
 /**
@@ -210,15 +273,22 @@ function hoy() {
 }
 
 for (const pagina of paginas) {
-  const cuerpo = pagina.fuentes
-    .map(({ fichero, titulo }) => {
-      const texto = readFileSync(fichero, "utf8")
-        .replaceAll("{responsable}", responsable)
-        .replaceAll("{contacto}", contacto);
-      const encabezado = titulo ? `      <h2>${escapar(titulo)}</h2>\n` : "";
-      return encabezado + aHtml(texto);
-    })
-    .join("\n");
+  const items = pagina.fuentes.flatMap(({ fichero, titulo }) => {
+    const texto = readFileSync(fichero, "utf8")
+      .replaceAll("{responsable}", responsable)
+      .replaceAll("{contacto}", contacto);
+    // Un fichero con título propio es un grupo (h2) y sus apartados cuelgan de
+    // él (h3); sin título, los apartados son el primer nivel de la página.
+    const nivel = titulo ? 3 : 2;
+    return [
+      ...(titulo ? [{ nivel: 2, texto: titulo }] : []),
+      ...trozos(texto).map((t) =>
+        t.startsWith("# ") ? { nivel, texto: t.slice(2) } : { texto: t }
+      ),
+    ];
+  });
+  const { html, titulos } = apartados(items);
+  const cuerpo = (pagina.indice ? indicePagina(titulos) + "\n" : "") + html;
 
   writeFileSync(join(aqui, pagina.salida), plantilla({ ...pagina, cuerpo }), "utf8");
   console.log(`  ${pagina.salida}`);
