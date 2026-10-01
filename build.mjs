@@ -23,6 +23,12 @@ const aqui = dirname(fileURLToPath(import.meta.url));
 const app = join(aqui, "..", "MyGarden", "app", "src", "main", "res");
 const raw = join(app, "raw");
 
+// Dónde vive la web publicada. Hace falta entera, con el dominio, porque quien
+// lee las metas de "compartir" (WhatsApp, Telegram, Slack…) no resuelve rutas
+// relativas. Es la de GitHub Pages de este repositorio; si se pasa a un
+// dominio propio, esta línea es lo único que hay que cambiar.
+const web = "https://administracionmadaapps.github.io/MyGarden_web/";
+
 /**
  * Lo que va en cada página, en el orden de la portada. `fuentes` se concatenan
  * en el orden dado. `indice` añade "En esta página" arriba: las páginas largas
@@ -266,14 +272,31 @@ ${enlaces}
         </nav>`;
 }
 
+// Los dos theme-color son el --fondo de estilo.css en claro y en oscuro: la
+// barra del navegador en móvil se pinta del mismo color que la página.
 function plantilla({ titulo, entradilla, cuerpo, salida, esPortada = false }) {
+  const nombre = esPortada ? "MyGarden AI" : `${escapar(titulo)} · MyGarden AI`;
   return `<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>${esPortada ? "MyGarden AI" : `${escapar(titulo)} · MyGarden AI`}</title>
+    <title>${nombre}</title>
     <meta name="description" content="${escapar(entradilla)}" />
+    <meta name="theme-color" content="#f5efc2" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#10140f" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="icono.png" type="image/png" />
+    <link rel="apple-touch-icon" href="icono.png" />
+    <meta property="og:site_name" content="MyGarden AI" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:title" content="${nombre}" />
+    <meta property="og:description" content="${escapar(entradilla)}" />
+    <meta property="og:url" content="${web}${esPortada ? "" : salida}" />
+    <meta property="og:image" content="${web}logo.jpg" />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="806" />
+    <meta property="og:image:alt" content="MyGarden AI" />
     <link rel="stylesheet" href="estilo.css" />
   </head>
   <body>
