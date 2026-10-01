@@ -13,6 +13,8 @@
   --primario: #3d523d;
   --acento: #f3b4a9;
   --borde: #8c9c7c;
+  /* Scrollbars y fondo previo a la carga siguen el esquema, no solo la página. */
+  color-scheme: light dark;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -37,15 +39,21 @@ body {
   padding: 0;
   background: var(--fondo);
   color: var(--texto);
-  font-family: Nunito, "Segoe UI", system-ui, -apple-system, sans-serif;
+  /*
+   * Fuentes del sistema: sin licencia que cumplir, sin descargar nada y, sobre
+   * todo, sin pedirle ficheros a Google desde la página que explica a quién
+   * van los datos del lector.
+   */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   /* Un texto legal se lee entero o no se lee: interlineado generoso. */
   line-height: 1.7;
-  font-size: 17px;
+  /* 17px, pero en rem: respeta el tamaño de texto que el usuario tenga elegido. */
+  font-size: 1.0625rem;
 }
 
 .envoltorio {
-  /* 68 caracteres por línea es donde deja de cansar. */
-  max-width: 46rem;
+  /* Unos 70 caracteres por línea (medido), que es donde deja de cansar. */
+  max-width: 38rem;
   margin: 0 auto;
   padding: 1.5rem 1.25rem 4rem;
 }
@@ -64,6 +72,8 @@ header {
   font-weight: 700;
   font-size: 1.05rem;
   text-decoration: none;
+  /* Es la única vía de vuelta: que se acierte con el pulgar. */
+  padding-block: 0.6rem;
 }
 
 .marca:hover {
@@ -77,10 +87,35 @@ h1 {
   color: var(--texto);
 }
 
+/* Con 1.15rem el h2 medía 18px sobre 17px de cuerpo: no se veía al escanear. */
 h2 {
-  font-size: 1.15rem;
-  margin: 2.2rem 0 0.5rem;
+  font-size: 1.4rem;
+  margin: 2.6rem 0 0.5rem;
   color: var(--primario);
+}
+
+/* Los apartados que cuelgan de un grupo: solo los hay en la página de IA. */
+h3 {
+  font-size: 1.2rem;
+  margin: 1.8rem 0 0.4rem;
+  color: var(--primario);
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+/* Al saltar desde el índice, que el título no quede pegado al borde. */
+h2,
+h3 {
+  scroll-margin-top: 1rem;
+}
+
+p,
+.indice span {
+  text-wrap: pretty;
 }
 
 .entradilla {
@@ -122,6 +157,12 @@ a {
   text-underline-offset: 2px;
 }
 
+a:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--primario);
+  outline-offset: 2px;
+}
+
 /* Las tarjetas del índice: el mismo salvia que la app usa para las suyas. */
 .indice {
   list-style: none;
@@ -156,7 +197,59 @@ a {
   font-size: 0.92rem;
 }
 
-/* Lo que hay que hacer para darse de baja, destacado sobre el resto. */
+/*
+ * La tarjeta de lo que más se viene a buscar, rellena para que se vea la
+ * primera. Texto en --fondo sobre --primario: el par invertido de los enlaces,
+ * con el mismo contraste (7,3:1 en claro, 10,7:1 en oscuro).
+ */
+.indice a.principal {
+  background: var(--primario);
+  color: var(--fondo);
+}
+
+.indice a.principal span {
+  color: var(--fondo);
+}
+
+.indice a.principal:hover,
+.indice a.principal:focus-visible {
+  border-color: var(--fondo);
+}
+
+/* "En esta página": plegado, para no empujar el texto hacia abajo. */
+.contenido {
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 0 1.25rem;
+  margin: 0 0 1.5rem;
+}
+
+.contenido summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--primario);
+  padding-block: 0.7rem;
+}
+
+.contenido ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.6rem;
+}
+
+.contenido a {
+  display: block;
+  padding-block: 0.3rem;
+}
+
+.contenido .sub {
+  margin-left: 1.1rem;
+}
+
+/*
+ * Lo que el lector tiene que hacer o no puede pasar por alto: las dos vías
+ * para borrar sus datos y los avisos de toxicidad. Lleva dentro su título.
+ */
 .destacado {
   background: var(--superficie);
   border: 1px solid var(--borde);
@@ -166,11 +259,11 @@ a {
   margin: 1.5rem 0;
 }
 
-.destacado p:first-child {
+.destacado > :first-child {
   margin-top: 0;
 }
 
-.destacado p:last-child {
+.destacado > :last-child {
   margin-bottom: 0;
 }
 
@@ -186,14 +279,29 @@ footer a {
   color: var(--texto-suave);
 }
 
+/* Las demás páginas. El alto del enlace es para que se acierte con el pulgar. */
+footer nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.25rem;
+}
+
+footer nav a {
+  display: inline-block;
+  padding-block: 0.4rem;
+}
+
 /* Una línea de teléfono no aguanta 17px con márgenes de escritorio. */
 @media (max-width: 30rem) {
   body {
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   h1 {
-    font-size: 1.6rem;
+    font-size: 1.75rem;
   }
 
   .envoltorio {
