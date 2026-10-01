@@ -39,7 +39,12 @@ body {
   padding: 0;
   background: var(--fondo);
   color: var(--texto);
-  font-family: Nunito, "Segoe UI", system-ui, -apple-system, sans-serif;
+  /*
+   * Fuentes del sistema: sin licencia que cumplir, sin descargar nada y, sobre
+   * todo, sin pedirle ficheros a Google desde la página que explica a quién
+   * van los datos del lector.
+   */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   /* Un texto legal se lee entero o no se lee: interlineado generoso. */
   line-height: 1.7;
   /* 17px, pero en rem: respeta el tamaño de texto que el usuario tenga elegido. */
