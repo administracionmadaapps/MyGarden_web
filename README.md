@@ -43,6 +43,10 @@ hermanas**. Si dejan de estarlo, la ruta está en una sola línea de `build.mjs`
 | `logo.jpg` | copia de `res/drawable-nodpi/img_logo.jpg`; sale también al compartir un enlace |
 | `icono.png` | `ic_launcher-playstore.png` de la app reducido a 192 px; es el favicon |
 
+En `contenido/borrar-datos.txt`, lo que va entre dobles asteriscos
+(`**así**`) sale en negrita; se usa para los nombres de la interfaz de la
+aplicación. Los textos de `res/raw` no llevan asteriscos.
+
 `logo.jpg` e `icono.png` no se generan: si cambian en la app, hay que volver a
 copiarlos. La dirección pública de la web, que necesitan las metas de compartir,
 está en una sola línea de `build.mjs` (`web`).

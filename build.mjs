@@ -189,7 +189,9 @@ function apartados(items, { destacar = [], asunto } = {}) {
 
   for (const { nivel, texto } of items) {
     if (!nivel) {
-      salida.push(`      <p>${enlazar(escapar(texto), destacado ? asunto : undefined)}</p>`);
+      salida.push(
+        `      <p>${enNegrita(enlazar(escapar(texto), destacado ? asunto : undefined))}</p>`
+      );
       continue;
     }
     cerrar();
@@ -229,6 +231,17 @@ ${enlaces}
           </ul>
         </details>
       </nav>`;
+}
+
+/**
+ * Negrita entre dobles asteriscos, para poder marcar los nombres de la
+ * interfaz ("Acerca de", "Eliminar mi cuenta") en los textos propios de la web.
+ * Los textos de la app no llevan asteriscos ni el formato de res/raw tiene
+ * negrita; si alguno los llevara, saldrían en negrita aquí y no en la app.
+ * Se hace después de escapar, que no toca los asteriscos.
+ */
+function enNegrita(html) {
+  return html.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
 }
 
 /**

@@ -3,8 +3,8 @@ dos formas de hacerlo: desde la propia aplicación, que es inmediata, y escribie
 que es la vía para quien ya no la tiene instalada.
 
 # Desde la aplicación
-Entra en Inicio, abre el menú tocando tu foto de perfil arriba a la derecha y elige "Acerca de".
-Al final de esa pantalla está la opción "Eliminar mi cuenta".
+Entra en **Inicio**, abre el menú tocando tu foto de perfil arriba a la derecha y elige
+**Acerca de**. Al final de esa pantalla está la opción **Eliminar mi cuenta**.
 
 Por seguridad se te pedirá que vuelvas a identificarte con Google antes de continuar. Después el
 borrado sigue por su cuenta y no hace falta esperar con la aplicación abierta.
