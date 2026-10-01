@@ -227,7 +227,10 @@ summary:focus-visible {
   margin-left: 1.1rem;
 }
 
-/* Lo que hay que hacer para darse de baja, destacado sobre el resto. */
+/*
+ * Lo que el lector tiene que hacer o no puede pasar por alto: las dos vías
+ * para borrar sus datos y los avisos de toxicidad. Lleva dentro su título.
+ */
 .destacado {
   background: var(--superficie);
   border: 1px solid var(--borde);
@@ -237,11 +240,11 @@ summary:focus-visible {
   margin: 1.5rem 0;
 }
 
-.destacado p:first-child {
+.destacado > :first-child {
   margin-top: 0;
 }
 
-.destacado p:last-child {
+.destacado > :last-child {
   margin-bottom: 0;
 }
 

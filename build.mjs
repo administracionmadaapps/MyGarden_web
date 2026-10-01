@@ -27,6 +27,12 @@ const raw = join(app, "raw");
  * Lo que va en cada página, en el orden de la portada. `fuentes` se concatenan
  * en el orden dado. `indice` añade "En esta página" arriba: las páginas largas
  * lo piden; la de borrar datos no, porque lo que importa está ya a la vista.
+ *
+ * `destacar` lista títulos de apartado que se pintan en un recuadro aparte,
+ * para lo que el lector tiene que hacer o no puede pasar por alto. Se
+ * identifican por su título: si el texto de la app lo cambia, el build falla
+ * en vez de dejar de destacarlo sin que nadie lo note. `asunto` es el asunto
+ * que llevan los enlaces de correo dentro de esos recuadros.
  */
 const paginas = [
   {
@@ -35,6 +41,9 @@ const paginas = [
     entradilla:
       "Cómo eliminar tu cuenta y todo lo que tenga asociado, con la aplicación instalada o sin ella.",
     fuentes: [{ fichero: join(aqui, "contenido", "borrar-datos.txt") }],
+    // Las dos vías para pedir el borrado: a lo que se viene a esta página.
+    destacar: ["Desde la aplicación", "Si ya la has desinstalado"],
+    asunto: "Eliminar mi cuenta",
   },
   {
     salida: "privacidad.html",
@@ -57,6 +66,9 @@ const paginas = [
       { fichero: join(raw, "legal_ia_limites.txt"), titulo: "Límites de la información" },
     ],
     indice: true,
+    // Lo único de la web que puede hacerle daño a alguien si se lee por encima:
+    // la toxicidad para animales y que la app no dice qué se puede comer.
+    destacar: ["Toxicidad y salud animal", "Sobre el consumo de plantas"],
   },
   {
     salida: "terminos.html",
@@ -153,19 +165,42 @@ function idDe(texto, usados) {
  * Pasa los trozos a html. Cada uno es `{ nivel, texto }` si es un título (2 o
  * 3) o `{ texto }` si es un párrafo. Devuelve también los títulos con su id,
  * que es lo que necesita el índice de la página.
+ *
+ * Un apartado de `destacar` va entero (título y párrafos hasta el siguiente
+ * título) dentro de un recuadro. El `asunto` solo se pone a los correos de
+ * esos recuadros: son los que dicen "escribe a…" para hacer algo, y el de otro
+ * apartado, como "si algo no funciona", es otro asunto.
  */
-function apartados(items) {
+function apartados(items, { destacar = [], asunto } = {}) {
   const usados = new Set();
   const titulos = [];
-  const html = items
-    .map(({ nivel, texto }) => {
-      if (!nivel) return `      <p>${enlazar(escapar(texto))}</p>`;
-      const id = idDe(texto, usados);
-      titulos.push({ nivel, texto, id });
-      return `      <h${nivel} id="${id}">${enlazar(escapar(texto))}</h${nivel}>`;
-    })
-    .join("\n");
-  return { html, titulos };
+  const salida = [];
+  let destacado = false;
+  const cerrar = () => {
+    if (destacado) salida.push("      </div>");
+    destacado = false;
+  };
+
+  for (const { nivel, texto } of items) {
+    if (!nivel) {
+      salida.push(`      <p>${enlazar(escapar(texto), destacado ? asunto : undefined)}</p>`);
+      continue;
+    }
+    cerrar();
+    const id = idDe(texto, usados);
+    titulos.push({ nivel, texto, id });
+    destacado = destacar.includes(texto);
+    if (destacado) salida.push('      <div class="destacado">');
+    salida.push(`      <h${nivel} id="${id}">${enlazar(escapar(texto))}</h${nivel}>`);
+  }
+  cerrar();
+
+  for (const t of destacar) {
+    if (!titulos.some((x) => x.texto === t)) {
+      throw new Error(`No hay ningún apartado "${t}" que destacar`);
+    }
+  }
+  return { html: salida.join("\n"), titulos };
 }
 
 /**
@@ -196,10 +231,18 @@ ${enlaces}
  * finales y aquí solo hay dos casos.
  *
  * Se hace después de escapar para no romper las comillas del atributo.
+ *
+ * Con `asunto`, el correo se abre ya con el asunto puesto: quien escribe para
+ * borrar sus datos no tiene que pensar qué decir, y quien lo atiende sabe de
+ * qué va sin abrirlo.
  */
-function enlazar(html) {
+function enlazar(html, asunto) {
+  const consulta = asunto ? `?subject=${encodeURIComponent(asunto)}` : "";
   return html
-    .replaceAll(contacto, `<a href="mailto:${contacto}">${contacto}</a>`)
+    .replaceAll(
+      contacto,
+      `<a href="mailto:${contacto}${consulta}">${contacto}</a>`
+    )
     .replaceAll(
       "www.aepd.es",
       '<a href="https://www.aepd.es" rel="noopener">www.aepd.es</a>'
@@ -287,7 +330,7 @@ for (const pagina of paginas) {
       ),
     ];
   });
-  const { html, titulos } = apartados(items);
+  const { html, titulos } = apartados(items, pagina);
   const cuerpo = (pagina.indice ? indicePagina(titulos) + "\n" : "") + html;
 
   writeFileSync(join(aqui, pagina.salida), plantilla({ ...pagina, cuerpo }), "utf8");
