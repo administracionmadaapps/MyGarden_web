@@ -13,6 +13,8 @@
   --primario: #3d523d;
   --acento: #f3b4a9;
   --borde: #8c9c7c;
+  /* Scrollbars y fondo previo a la carga siguen el esquema, no solo la página. */
+  color-scheme: light dark;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -40,12 +42,13 @@ body {
   font-family: Nunito, "Segoe UI", system-ui, -apple-system, sans-serif;
   /* Un texto legal se lee entero o no se lee: interlineado generoso. */
   line-height: 1.7;
-  font-size: 17px;
+  /* 17px, pero en rem: respeta el tamaño de texto que el usuario tenga elegido. */
+  font-size: 1.0625rem;
 }
 
 .envoltorio {
-  /* 68 caracteres por línea es donde deja de cansar. */
-  max-width: 46rem;
+  /* Unos 70 caracteres por línea (medido), que es donde deja de cansar. */
+  max-width: 38rem;
   margin: 0 auto;
   padding: 1.5rem 1.25rem 4rem;
 }
@@ -64,6 +67,8 @@ header {
   font-weight: 700;
   font-size: 1.05rem;
   text-decoration: none;
+  /* Es la única vía de vuelta: que se acierte con el pulgar. */
+  padding-block: 0.6rem;
 }
 
 .marca:hover {
@@ -77,10 +82,21 @@ h1 {
   color: var(--texto);
 }
 
+/* Con 1.15rem el h2 medía 18px sobre 17px de cuerpo: no se veía al escanear. */
 h2 {
-  font-size: 1.15rem;
-  margin: 2.2rem 0 0.5rem;
+  font-size: 1.4rem;
+  margin: 2.6rem 0 0.5rem;
   color: var(--primario);
+}
+
+h1,
+h2 {
+  text-wrap: balance;
+}
+
+p,
+.indice span {
+  text-wrap: pretty;
 }
 
 .entradilla {
@@ -120,6 +136,11 @@ a {
   color: var(--primario);
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--primario);
+  outline-offset: 2px;
 }
 
 /* Las tarjetas del índice: el mismo salvia que la app usa para las suyas. */
@@ -189,11 +210,11 @@ footer a {
 /* Una línea de teléfono no aguanta 17px con márgenes de escritorio. */
 @media (max-width: 30rem) {
   body {
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   h1 {
-    font-size: 1.6rem;
+    font-size: 1.75rem;
   }
 
   .envoltorio {
