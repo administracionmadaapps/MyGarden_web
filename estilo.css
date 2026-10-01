@@ -260,6 +260,21 @@ footer a {
   color: var(--texto-suave);
 }
 
+/* Las demás páginas. El alto del enlace es para que se acierte con el pulgar. */
+footer nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.25rem;
+}
+
+footer nav a {
+  display: inline-block;
+  padding-block: 0.4rem;
+}
+
 /* Una línea de teléfono no aguanta 17px con márgenes de escritorio. */
 @media (max-width: 30rem) {
   body {

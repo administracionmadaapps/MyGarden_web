@@ -249,7 +249,24 @@ function enlazar(html, asunto) {
     );
 }
 
-function plantilla({ titulo, entradilla, cuerpo, esPortada = false }) {
+/**
+ * Las demás páginas, en el pie: sin esto, pasar de la política de privacidad a
+ * cómo borrar los datos obliga a volver a la portada. La actual no se lista.
+ * La portada no la lleva: ya es una lista de todas.
+ */
+function navegacion(actual) {
+  const enlaces = paginas
+    .filter((p) => p.salida !== actual)
+    .map((p) => `            <li><a href="${p.salida}">${escapar(p.titulo)}</a></li>`)
+    .join("\n");
+  return `<nav aria-label="Otras páginas">
+          <ul>
+${enlaces}
+          </ul>
+        </nav>`;
+}
+
+function plantilla({ titulo, entradilla, cuerpo, salida, esPortada = false }) {
   return `<!DOCTYPE html>
 <html lang="es">
   <head>
@@ -289,8 +306,11 @@ function plantilla({ titulo, entradilla, cuerpo, esPortada = false }) {
           esPortada ? "" : `<p class="entradilla">${escapar(entradilla)}</p>`
         }
       </header>
-${cuerpo}
+      <main>
+${cuerpo.replace(/^(?=.)/gm, "  ")}
+      </main>
       <footer>
+        ${esPortada ? "" : navegacion(salida)}
         <p>
           Responsable: ${escapar(responsable)} &middot;
           <a href="mailto:${contacto}">${contacto}</a>

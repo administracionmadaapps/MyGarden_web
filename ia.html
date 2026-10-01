@@ -14,49 +14,58 @@
         <h1>Uso de inteligencia artificial</h1>
         <p class="entradilla">Qué se envía al modelo, con qué límites, y hasta dónde llega lo que responde.</p>
       </header>
-      <nav class="contenido" aria-label="En esta página">
-        <details>
-          <summary>En esta página</summary>
-          <ul>
-          <li><a href="#como-se-tratan-tus-imagenes">Cómo se tratan tus imágenes</a></li>
-          <li class="sub"><a href="#tratamiento-de-las-imagenes">Tratamiento de las imágenes</a></li>
-          <li class="sub"><a href="#limitacion-del-uso">Limitación del uso</a></li>
-          <li class="sub"><a href="#seguridad-de-las-credenciales">Seguridad de las credenciales</a></li>
-          <li><a href="#limites-de-la-informacion">Límites de la información</a></li>
-          <li class="sub"><a href="#margen-de-error">Margen de error</a></li>
-          <li class="sub"><a href="#toxicidad-y-salud-animal">Toxicidad y salud animal</a></li>
-          <li class="sub"><a href="#sobre-el-consumo-de-plantas">Sobre el consumo de plantas</a></li>
-          <li class="sub"><a href="#limitacion-de-responsabilidad">Limitación de responsabilidad</a></li>
-          </ul>
-        </details>
-      </nav>
-      <h2 id="como-se-tratan-tus-imagenes">Cómo se tratan tus imágenes</h2>
-      <p>Las funciones de identificación de especies y de análisis del estado de las plantas se apoyan en un modelo de inteligencia artificial. A continuación se explica qué se envía, a quién y con qué límites.</p>
-      <h3 id="tratamiento-de-las-imagenes">Tratamiento de las imágenes</h3>
-      <p>Cuando solicitas identificar una planta o revisar su estado, la fotografía se transmite mediante una conexión cifrada a un servidor propio y, desde él, al modelo Gemini de Google, que devuelve la especie, las pautas de cuidado y la evaluación del estado de la planta.</p>
-      <h3 id="limitacion-del-uso">Limitación del uso</h3>
-      <p>MyGarden AI utiliza la modalidad de pago de la API de Gemini. Conforme a sus condiciones de servicio, Google no emplea el contenido enviado para entrenar ni mejorar sus modelos. La imagen se procesa con el único fin de responder a tu consulta y no se conserva en ese proceso.</p>
-      <p>Distinto es el caso de la fotografía que acompaña a una planta guardada: esa imagen permanece en tu cuenta, en Firebase Storage, hasta que la elimines tú o elimines la cuenta.</p>
-      <p>Google interviene en este proceso como encargado del tratamiento por cuenta del responsable. Al margen de esa intervención, las imágenes no se ceden ni se comunican a terceros.</p>
-      <h3 id="seguridad-de-las-credenciales">Seguridad de las credenciales</h3>
-      <p>La clave de acceso al modelo y los componentes de autenticación residen en el servidor. Estas credenciales no se incluyen en el código de la aplicación ni se transmiten al dispositivo, lo que evita su exposición y el uso no autorizado del servicio.</p>
-      <h2 id="limites-de-la-informacion">Límites de la información</h2>
-      <p>Los análisis, identificaciones y recomendaciones que ofrece la aplicación proceden de un modelo automático. Son estimaciones y no constituyen un diagnóstico profesional botánico, agronómico ni veterinario.</p>
-      <h3 id="margen-de-error">Margen de error</h3>
-      <p>El sistema puede equivocarse al identificar una especie, y puede acertar con la especie y fallar en el diagnóstico de su estado o en los cuidados que sugiere. La información mostrada tiene carácter orientativo y debe tomarse como una guía de apoyo, nunca como una certeza.</p>
-      <div class="destacado">
-      <h3 id="toxicidad-y-salud-animal">Toxicidad y salud animal</h3>
-      <p>La información sobre toxicidad para perros, gatos u otros animales es igualmente orientativa. Ante cualquier duda, y siempre ante una sospecha de intoxicación, acude de inmediato a un veterinario.</p>
-      </div>
-      <div class="destacado">
-      <h3 id="sobre-el-consumo-de-plantas">Sobre el consumo de plantas</h3>
-      <p>MyGarden AI no informa de si una planta es comestible ni de cómo prepararla, y no debe utilizarse con esa finalidad. Determinar si una especie puede consumirse exige la validación de un profesional cualificado, y una identificación a partir de una fotografía no sirve para ello.</p>
-      <p>En hortalizas, frutales y otros cultivos, la aplicación puede indicar qué se cosecha y en qué época se planta y se recoge. Es un calendario de cultivo de la especie identificada en la fotografía: no confirma que la planta fotografiada sea esa especie ni que sea comestible.</p>
-      </div>
-      <h3 id="limitacion-de-responsabilidad">Limitación de responsabilidad</h3>
-      <p>En la máxima medida permitida por la legislación aplicable, María Andreu Cabezón no responde de los daños o perjuicios derivados de las decisiones que el usuario adopte a partir de los resultados generados por el modelo de inteligencia artificial.</p>
-      <p>Esta limitación no alcanza a los daños causados por dolo o culpa grave, a los daños a la vida o a la integridad física de las personas, ni a los derechos que la normativa de consumo reconozca al usuario con carácter imperativo.</p>
+      <main>
+        <nav class="contenido" aria-label="En esta página">
+          <details>
+            <summary>En esta página</summary>
+            <ul>
+            <li><a href="#como-se-tratan-tus-imagenes">Cómo se tratan tus imágenes</a></li>
+            <li class="sub"><a href="#tratamiento-de-las-imagenes">Tratamiento de las imágenes</a></li>
+            <li class="sub"><a href="#limitacion-del-uso">Limitación del uso</a></li>
+            <li class="sub"><a href="#seguridad-de-las-credenciales">Seguridad de las credenciales</a></li>
+            <li><a href="#limites-de-la-informacion">Límites de la información</a></li>
+            <li class="sub"><a href="#margen-de-error">Margen de error</a></li>
+            <li class="sub"><a href="#toxicidad-y-salud-animal">Toxicidad y salud animal</a></li>
+            <li class="sub"><a href="#sobre-el-consumo-de-plantas">Sobre el consumo de plantas</a></li>
+            <li class="sub"><a href="#limitacion-de-responsabilidad">Limitación de responsabilidad</a></li>
+            </ul>
+          </details>
+        </nav>
+        <h2 id="como-se-tratan-tus-imagenes">Cómo se tratan tus imágenes</h2>
+        <p>Las funciones de identificación de especies y de análisis del estado de las plantas se apoyan en un modelo de inteligencia artificial. A continuación se explica qué se envía, a quién y con qué límites.</p>
+        <h3 id="tratamiento-de-las-imagenes">Tratamiento de las imágenes</h3>
+        <p>Cuando solicitas identificar una planta o revisar su estado, la fotografía se transmite mediante una conexión cifrada a un servidor propio y, desde él, al modelo Gemini de Google, que devuelve la especie, las pautas de cuidado y la evaluación del estado de la planta.</p>
+        <h3 id="limitacion-del-uso">Limitación del uso</h3>
+        <p>MyGarden AI utiliza la modalidad de pago de la API de Gemini. Conforme a sus condiciones de servicio, Google no emplea el contenido enviado para entrenar ni mejorar sus modelos. La imagen se procesa con el único fin de responder a tu consulta y no se conserva en ese proceso.</p>
+        <p>Distinto es el caso de la fotografía que acompaña a una planta guardada: esa imagen permanece en tu cuenta, en Firebase Storage, hasta que la elimines tú o elimines la cuenta.</p>
+        <p>Google interviene en este proceso como encargado del tratamiento por cuenta del responsable. Al margen de esa intervención, las imágenes no se ceden ni se comunican a terceros.</p>
+        <h3 id="seguridad-de-las-credenciales">Seguridad de las credenciales</h3>
+        <p>La clave de acceso al modelo y los componentes de autenticación residen en el servidor. Estas credenciales no se incluyen en el código de la aplicación ni se transmiten al dispositivo, lo que evita su exposición y el uso no autorizado del servicio.</p>
+        <h2 id="limites-de-la-informacion">Límites de la información</h2>
+        <p>Los análisis, identificaciones y recomendaciones que ofrece la aplicación proceden de un modelo automático. Son estimaciones y no constituyen un diagnóstico profesional botánico, agronómico ni veterinario.</p>
+        <h3 id="margen-de-error">Margen de error</h3>
+        <p>El sistema puede equivocarse al identificar una especie, y puede acertar con la especie y fallar en el diagnóstico de su estado o en los cuidados que sugiere. La información mostrada tiene carácter orientativo y debe tomarse como una guía de apoyo, nunca como una certeza.</p>
+        <div class="destacado">
+        <h3 id="toxicidad-y-salud-animal">Toxicidad y salud animal</h3>
+        <p>La información sobre toxicidad para perros, gatos u otros animales es igualmente orientativa. Ante cualquier duda, y siempre ante una sospecha de intoxicación, acude de inmediato a un veterinario.</p>
+        </div>
+        <div class="destacado">
+        <h3 id="sobre-el-consumo-de-plantas">Sobre el consumo de plantas</h3>
+        <p>MyGarden AI no informa de si una planta es comestible ni de cómo prepararla, y no debe utilizarse con esa finalidad. Determinar si una especie puede consumirse exige la validación de un profesional cualificado, y una identificación a partir de una fotografía no sirve para ello.</p>
+        <p>En hortalizas, frutales y otros cultivos, la aplicación puede indicar qué se cosecha y en qué época se planta y se recoge. Es un calendario de cultivo de la especie identificada en la fotografía: no confirma que la planta fotografiada sea esa especie ni que sea comestible.</p>
+        </div>
+        <h3 id="limitacion-de-responsabilidad">Limitación de responsabilidad</h3>
+        <p>En la máxima medida permitida por la legislación aplicable, María Andreu Cabezón no responde de los daños o perjuicios derivados de las decisiones que el usuario adopte a partir de los resultados generados por el modelo de inteligencia artificial.</p>
+        <p>Esta limitación no alcanza a los daños causados por dolo o culpa grave, a los daños a la vida o a la integridad física de las personas, ni a los derechos que la normativa de consumo reconozca al usuario con carácter imperativo.</p>
+      </main>
       <footer>
+        <nav aria-label="Otras páginas">
+          <ul>
+            <li><a href="borrar-datos.html">Eliminar tus datos</a></li>
+            <li><a href="privacidad.html">Protección de datos</a></li>
+            <li><a href="terminos.html">Condiciones de uso</a></li>
+          </ul>
+        </nav>
         <p>
           Responsable: María Andreu Cabezón &middot;
           <a href="mailto:administracion.mada.apps@gmail.com">administracion.mada.apps@gmail.com</a>
