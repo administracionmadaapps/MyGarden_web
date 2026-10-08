@@ -55,7 +55,7 @@ const paginas = [
     salida: "privacidad.html",
     titulo: "Protección de datos",
     entradilla:
-      "Qué datos registra MyGarden AI, dónde se guardan y qué puedes hacer con ellos.",
+      "Qué datos registra primrose AI, dónde se guardan y qué puedes hacer con ellos.",
     fuentes: [{ fichero: join(raw, "legal_datos.txt") }],
     indice: true,
   },
@@ -288,7 +288,7 @@ ${enlaces}
 // Los dos theme-color son el --fondo de estilo.css en claro y en oscuro: la
 // barra del navegador en móvil se pinta del mismo color que la página.
 function plantilla({ titulo, entradilla, cuerpo, salida, esPortada = false }) {
-  const nombre = esPortada ? "MyGarden AI" : `${escapar(titulo)} · MyGarden AI`;
+  const nombre = esPortada ? "primrose AI" : `${escapar(titulo)} · primrose AI`;
   return `<!DOCTYPE html>
 <html lang="es">
   <head>
@@ -300,7 +300,7 @@ function plantilla({ titulo, entradilla, cuerpo, salida, esPortada = false }) {
     <meta name="theme-color" content="#10140f" media="(prefers-color-scheme: dark)" />
     <link rel="icon" href="icono.png" type="image/png" />
     <link rel="apple-touch-icon" href="icono.png" />
-    <meta property="og:site_name" content="MyGarden AI" />
+    <meta property="og:site_name" content="primrose AI" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_ES" />
     <meta property="og:title" content="${nombre}" />
@@ -309,7 +309,7 @@ function plantilla({ titulo, entradilla, cuerpo, salida, esPortada = false }) {
     <meta property="og:image" content="${web}logo.jpg" />
     <meta property="og:image:width" content="1024" />
     <meta property="og:image:height" content="806" />
-    <meta property="og:image:alt" content="MyGarden AI" />
+    <meta property="og:image:alt" content="primrose AI" />
     <link rel="stylesheet" href="estilo.css" />
   </head>
   <body>
@@ -317,8 +317,8 @@ function plantilla({ titulo, entradilla, cuerpo, salida, esPortada = false }) {
       <header${esPortada ? ' class="portada"' : ""}>
         ${
           // En la portada no hay marca sobre el título: el título ya es la
-          // marca, y repetirla dejaba "MyGarden AI" dos veces seguidas.
-          esPortada ? "" : '<a class="marca" href="index.html">&larr; MyGarden AI</a>'
+          // marca, y repetirla dejaba "primrose AI" dos veces seguidas.
+          esPortada ? "" : '<a class="marca" href="index.html">&larr; primrose AI</a>'
         }
         ${
           // En la portada el título es el logo, que ya trae el nombre dibujado
@@ -330,7 +330,7 @@ function plantilla({ titulo, entradilla, cuerpo, salida, esPortada = false }) {
           // sep 2026): es el mismo recorte con esquinas redondeadas que la app
           // pone sobre la foto de la portada.
           esPortada
-            ? `<h1 class="logo"><img src="logo.jpg" alt="MyGarden AI" width="1024" height="806" /></h1>
+            ? `<h1 class="logo"><img src="logo.jpg" alt="primrose AI" width="1024" height="926" /></h1>
         <p class="lema">${escapar(lema)}</p>`
             : `<h1>${escapar(titulo)}</h1>`
         }
@@ -427,7 +427,7 @@ const portada = `      <ul class="indice">
 writeFileSync(
   join(aqui, "index.html"),
   plantilla({
-    titulo: "MyGarden AI",
+    titulo: "primrose AI",
     entradilla:
       "Aplicación para cuidar tus plantas: identifícalas con una foto, apunta sus riegos y sigue cómo están.",
     cuerpo: portada,

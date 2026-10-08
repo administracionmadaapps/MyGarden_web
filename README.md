@@ -1,4 +1,4 @@
-# Web de MyGarden AI
+# Web de primrose AI
 
 Las páginas legales públicas de la aplicación. Existen porque Google Play exige
 dos URLs accesibles **sin instalar nada**: la política de privacidad, que va en
