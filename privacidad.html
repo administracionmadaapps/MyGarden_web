@@ -37,6 +37,7 @@
             <li><a href="#datos-que-se-registran">Datos que se registran</a></li>
             <li><a href="#prevision-meteorologica">Previsión meteorológica</a></li>
             <li><a href="#donde-se-almacenan">Dónde se almacenan</a></li>
+            <li><a href="#datos-tecnicos-de-los-servicios-de-google">Datos técnicos de los servicios de Google</a></li>
             <li><a href="#finalidad-y-base-juridica">Finalidad y base jurídica</a></li>
             <li><a href="#plazo-de-conservacion">Plazo de conservación</a></li>
             <li><a href="#transferencias-internacionales">Transferencias internacionales</a></li>
@@ -49,10 +50,10 @@
         </nav>
         <p>primrose AI trata los datos personales de sus usuarios conforme al Reglamento (UE) 2016/679 (RGPD) y a la normativa española de protección de datos. A continuación se detalla qué información se registra, dónde se conserva y con qué alcance.</p>
         <h2 id="responsable-del-tratamiento">Responsable del tratamiento</h2>
-        <p>El responsable del tratamiento de los datos recogidos por primrose AI es María Andreu Cabezón. Para cualquier consulta relacionada con esta información, o para ejercer los derechos que se describen más abajo, puedes escribir a <a href="mailto:administracion.mada.apps@gmail.com">administracion.mada.apps@gmail.com</a>.</p>
+        <p>El responsable del tratamiento de los datos recogidos por primrose AI es María Andreu Cabezón. Para cualquier consulta relacionada con esta información, o para ejercer los derechos que se describen más abajo, puedes escribir a <a href="mailto:desarrollos.mada.apps@gmail.com">desarrollos.mada.apps@gmail.com</a>.</p>
         <h2 id="datos-que-se-registran">Datos que se registran</h2>
         <p>Datos de la cuenta: identificador único de usuario (UID), nombre, dirección de correo electrónico y fotografía de perfil asociados a la cuenta de Google con la que accedes, junto con la fecha de alta y la del último acceso.</p>
-        <p>Datos de jardines y plantas: la información que tú introduces, incluyendo el nombre y la descripción de cada jardín, su tipo y la ubicación que le asignes, y de cada planta su nombre, su descripción, sus cuidados, la fecha del último riego y el último análisis de estado.</p>
+        <p>Datos de jardines y plantas: la información que tú introduces, incluyendo el nombre y la descripción de cada jardín, su tipo y la ubicación que le asignes, y de cada planta su nombre, su descripción, sus cuidados, la fecha del último riego y el último análisis de estado. De las plantas que apuntas en el cuaderno de campo se guarda además el lugar y la fecha en que las viste, si los indicas.</p>
         <p>Archivos multimedia: las fotografías de tus plantas.</p>
         <p>De cada planta se guarda únicamente la última fecha de riego, no la serie completa de riegos anteriores.</p>
         <p>De los análisis de estado sí se conserva un historial breve: los cinco más recientes de cada planta, con su fecha, su valoración y la fotografía con la que se realizaron. Al llegar a ese número, el más antiguo se elimina por completo, incluida su fotografía.</p>
@@ -62,9 +63,13 @@
         <p>Los avisos de mal tiempo se deciden en tu teléfono. El servidor no consulta tus jardines para esto ni te envía notificaciones.</p>
         <h2 id="donde-se-almacenan">Dónde se almacenan</h2>
         <p>La información se aloja en la infraestructura de Google Cloud a través de Firebase: Cloud Firestore para los datos de la cuenta, los jardines y las plantas, y Firebase Storage para las fotografías. Google actúa como encargado del tratamiento por cuenta del responsable.</p>
+        <h2 id="datos-tecnicos-de-los-servicios-de-google">Datos técnicos de los servicios de Google</h2>
+        <p>Algunos componentes de Google que utiliza la aplicación recogen por su cuenta datos técnicos, que la aplicación no lee ni guarda:</p>
+        <p>Firebase, que presta la cuenta, el almacenamiento y el servidor, registra la dirección IP de cada conexión, un identificador de la instalación de la aplicación y un identificador del servicio de notificaciones de Google. Además, en cada llamada al servidor, Google Play Integrity comprueba que se trata de la aplicación original instalada desde Google Play y en un dispositivo no manipulado, para evitar abusos.</p>
+        <p>El mapa del cuaderno de campo utiliza el componente de mapas de Google (Maps SDK), que recoge datos del dispositivo como el modelo y la versión del sistema, la dirección IP, un identificador propio que no identifica a la persona, los informes de fallos de ese componente y los movimientos y acercamientos que haces sobre el mapa. Google los utiliza para mantener y mejorar sus servicios, conforme a su política de privacidad (policies.google.com/privacy).</p>
         <h2 id="finalidad-y-base-juridica">Finalidad y base jurídica</h2>
         <p>Los datos se tratan con la finalidad exclusiva de prestar el servicio que solicitas: mantener tu cuenta, conservar el registro de tus jardines y plantas, y ofrecer las funciones de identificación y análisis. La base jurídica es la ejecución del contrato que supone el uso de la aplicación (artículo 6.1.b del RGPD).</p>
-        <p>Tus datos no se venden, no se alquilan ni se ceden a terceros con fines comerciales. No se utilizan para publicidad, ni para elaborar perfiles, ni para ninguna finalidad distinta de la descrita. Los únicos terceros que intervienen son los proveedores necesarios para que el servicio funcione, que se detallan en esta información y que actúan por cuenta del responsable.</p>
+        <p>Tus datos no se venden, no se alquilan ni se ceden a terceros con fines comerciales. No se utilizan para publicidad, ni para elaborar perfiles, ni para ninguna finalidad distinta de la descrita. Los únicos terceros que intervienen son los proveedores necesarios para que el servicio funcione, que se detallan en esta información y que actúan por cuenta del responsable, con la salvedad de los datos técnicos que Google utiliza para sus propios servicios, descritos en el apartado anterior.</p>
         <h2 id="plazo-de-conservacion">Plazo de conservación</h2>
         <p>Los datos se conservan mientras la cuenta permanezca activa. Al eliminar la cuenta desde la propia aplicación, la información de perfil, los jardines, las plantas y las fotografías se borran de forma automática y sin posibilidad de recuperación.</p>
         <p>La constancia de las suscripciones contratadas es la única excepción a ese borrado, y no es voluntaria: la normativa fiscal y mercantil obliga a conservar la documentación de las operaciones durante los plazos que establece, que pueden alcanzar los seis años. Esa información se guarda bloqueada, separada del resto y sin utilizarla para ninguna otra finalidad, y solo se pone a disposición de la Administración tributaria, los jueces o los tribunales si la requieren.</p>
@@ -75,11 +80,11 @@
         <p>La aplicación aplica reglas de seguridad en el servidor, tanto en Cloud Firestore como en Firebase Storage, que restringen el acceso de cada usuario exclusivamente a su propia información. Ningún otro usuario puede leer ni modificar tus datos.</p>
         <p>Las fotografías se sirven mediante un enlace con un identificador aleatorio no predecible. Ese enlace no se publica en ningún lugar y consta únicamente en tu propia ficha, a la que solo tú tienes acceso; sin él no es posible llegar al archivo.</p>
         <h2 id="tus-derechos">Tus derechos</h2>
-        <p>Puedes ejercer los derechos de acceso, rectificación, supresión, limitación del tratamiento, portabilidad y oposición escribiendo a <a href="mailto:administracion.mada.apps@gmail.com">administracion.mada.apps@gmail.com</a>. El derecho de supresión puedes ejercerlo además de forma inmediata y por ti mismo, eliminando tu cuenta desde la aplicación.</p>
+        <p>Puedes ejercer los derechos de acceso, rectificación, supresión, limitación del tratamiento, portabilidad y oposición escribiendo a <a href="mailto:desarrollos.mada.apps@gmail.com">desarrollos.mada.apps@gmail.com</a>. El derecho de supresión puedes ejercerlo además de forma inmediata y por ti mismo, eliminando tu cuenta desde la aplicación.</p>
         <p>Si consideras que el tratamiento no se ajusta a la normativa, puedes presentar una reclamación ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es" rel="noopener">www.aepd.es</a>).</p>
         <h2 id="menores-de-edad">Menores de edad</h2>
         <p>primrose AI está dirigida a personas de 14 años o más, que es la edad a partir de la cual la normativa española permite consentir por uno mismo el tratamiento de los datos personales. No se recogen datos de forma consciente de menores de esa edad.</p>
-        <p>Si tienes conocimiento de que un menor de 14 años ha creado una cuenta sin el consentimiento de quien ejerce su patria potestad o tutela, escribe a <a href="mailto:administracion.mada.apps@gmail.com">administracion.mada.apps@gmail.com</a>: la cuenta se eliminará junto con todos sus datos.</p>
+        <p>Si tienes conocimiento de que un menor de 14 años ha creado una cuenta sin el consentimiento de quien ejerce su patria potestad o tutela, escribe a <a href="mailto:desarrollos.mada.apps@gmail.com">desarrollos.mada.apps@gmail.com</a>: la cuenta se eliminará junto con todos sus datos.</p>
         <h2 id="cambios-en-esta-informacion">Cambios en esta información</h2>
         <p>Esta información puede actualizarse cuando cambien las funciones de la aplicación o la normativa que le resulta aplicable. Los cambios relevantes se comunicarán dentro de la aplicación antes de que entren en vigor.</p>
         <p>La versión vigente en cada momento es la que puede consultarse aquí y en la web pública, y lleva indicada la fecha de su última actualización.</p>
@@ -94,9 +99,9 @@
         </nav>
         <p>
           Responsable: María Andreu Cabezón &middot;
-          <a href="mailto:administracion.mada.apps@gmail.com">administracion.mada.apps@gmail.com</a>
+          <a href="mailto:desarrollos.mada.apps@gmail.com">desarrollos.mada.apps@gmail.com</a>
         </p>
-        <p>Última actualización: 8 de octubre de 2026</p>
+        <p>Última actualización: 10 de octubre de 2026</p>
       </footer>
     </div>
   </body>
