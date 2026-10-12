@@ -103,6 +103,8 @@ function valorDeStrings(nombre, carpeta = "values") {
 
 const responsable = valorDeStrings("legal_owner");
 const contacto = valorDeStrings("legal_contact");
+const nif = valorDeStrings("legal_nif");
+const domicilio = valorDeStrings("legal_address");
 
 /**
  * El lema de la portada. Sale de `values-es` y no del fichero base porque esta
@@ -375,7 +377,15 @@ for (const pagina of paginas) {
   const items = pagina.fuentes.flatMap(({ fichero, titulo }) => {
     const texto = readFileSync(fichero, "utf8")
       .replaceAll("{responsable}", responsable)
-      .replaceAll("{contacto}", contacto);
+      .replaceAll("{contacto}", contacto)
+      .replaceAll("{nif}", nif)
+      .replaceAll("{domicilio}", domicilio);
+    // Un marcador nuevo en los textos que no se sustituya aquí saldría tal cual
+    // en la página legal; mejor que la web no se genere.
+    const suelto = texto.match(/\{[a-z]+\}/);
+    if (suelto) {
+      throw new Error(`${fichero}: ${suelto[0]} sin sustituir`);
+    }
     // Un fichero con título propio es un grupo (h2) y sus apartados cuelgan de
     // él (h3); sin título, los apartados son el primer nivel de la página.
     const nivel = titulo ? 3 : 2;
