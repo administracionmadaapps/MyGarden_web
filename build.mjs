@@ -47,8 +47,13 @@ const paginas = [
     entradilla:
       "Cómo eliminar tu cuenta y todo lo que tenga asociado, con la aplicación instalada o sin ella.",
     fuentes: [{ fichero: join(aqui, "contenido", "borrar-datos.txt") }],
-    // Las dos vías para pedir el borrado: a lo que se viene a esta página.
-    destacar: ["Desde la aplicación", "Si ya la has desinstalado"],
+    // Las dos vías para pedir el borrado, que es a lo que se viene a esta
+    // página, y lo que hay que hacer antes para no seguir pagando.
+    destacar: [
+      "Antes de borrar: cancela la suscripción",
+      "Desde la aplicación",
+      "Si ya la has desinstalado",
+    ],
     asunto: "Eliminar mi cuenta",
   },
   {
@@ -73,8 +78,8 @@ const paginas = [
     ],
     indice: true,
     // Lo único de la web que puede hacerle daño a alguien si se lee por encima:
-    // la toxicidad para animales y que la app no dice qué se puede comer.
-    destacar: ["Toxicidad y salud animal", "Sobre el consumo de plantas"],
+    // la toxicidad y que la app no dice qué se puede comer ni tomar.
+    destacar: ["Toxicidad", "Consumo y usos medicinales"],
   },
   {
     salida: "terminos.html",
@@ -432,7 +437,9 @@ const portada = `      <ul class="indice">
             <span>Las condiciones que acepta quien usa la aplicación</span>
           </a>
         </li>
-      </ul>`;
+      </ul>
+      <p>Esta web no usa cookies ni recoge datos. Está alojada en GitHub Pages, que registra la
+      dirección IP de las visitas conforme a su propia política de privacidad.</p>`;
 
 writeFileSync(
   join(aqui, "index.html"),
